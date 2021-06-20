@@ -1,0 +1,269 @@
+<div class="container">
+    <p></p>
+    <div class="title d-flex flex-column align-items-center">
+        <h1 class="m-0">ALAZIYA KADAN</h1>
+        <span class="line-sm"></span>
+    </div>
+    <form [formGroup]="dazzlingDebtForm" (ngSubmit)="submit()">
+        <div class="row border ">
+            <div class="col-md-3 col-sm-12 mt-3">
+                <mat-form-field>
+                    <mat-label>Alahiya Kadan N0</mat-label>
+                    <input formControlName="alazhiyaKadanNo" matInput value="Auto Generate">
+                </mat-form-field>
+            </div>
+            <div class="col-md-3 col-sm-12 mt-3">
+                <mat-form-field>
+                  <mat-label>Amount</mat-label>
+                  <input formControlName="debtAmount" matInput>
+                </mat-form-field>
+            </div>
+            <div class="col-md-3 col-sm-12 mt-3">
+                <mat-form-field>
+                    <mat-label>Duration</mat-label>
+                    <input formControlName="duration" matInput value="3 Month">
+                </mat-form-field>
+            </div>
+            <div class="col-md-3 col-sm-12 mt-2">
+                <mat-form-field appearance="fill">
+                  <mat-label>Date</mat-label>
+                  <mat-datepicker #dp1 [disabled]="false"></mat-datepicker>
+                  <input formControlName="debtDate" matInput [matDatepicker]="dp1">
+                  <mat-datepicker-toggle matSuffix [for]="dp1"></mat-datepicker-toggle>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row border">
+            <div class="col-md-6 col-sm-12 border">
+                <div class="personal-detail info-wrapper">
+                    <h2 class="info-title">Personal details
+                    </h2>
+
+                    <div class="info-contents">
+                        <div class="d-flex ">
+                            <mat-checkbox class="mt-2 ">IS Member</mat-checkbox>
+                            <mat-form-field class="ml-1">
+                                <mat-label>Member Number*</mat-label>
+                                <input formControlName="memberNumber" matInput placeholder="iwas00..">
+                                <button mat-button matSuffix mat-icon-button (click)="getValueByMemberNumber()">
+                                    <mat-icon>search</mat-icon>
+                                </button>
+                            </mat-form-field>
+                            <mat-form-field class="ml-4">
+                                <mat-label> 'Aadhar Number*</mat-label>
+                                <input formControlName="aadharNumber" matInput placeholder="123462721712">
+                                <button mat-button matSuffix mat-icon-button (click)="getValueByAadharNumber()">
+                                    <mat-icon>search</mat-icon>
+                                </button>
+                            </mat-form-field>
+                        </div>
+                        <div class="d-flex equal-width">
+                            <mat-form-field class="mr-4">
+                                <input formControlName="memberName" matInput placeholder="Name*">
+                            </mat-form-field>
+                            <mat-form-field class="mr-4">
+                                <input formControlName="fatherName" matInput placeholder="Father Name*">
+                            </mat-form-field>
+                        </div>
+                        <mat-form-field>
+                            <mat-label>Permanent Address</mat-label>
+                            <textarea formControlName="permanentAddress" matInput
+                                placeholder="Ex. 37 Chinna saliya St"></textarea>
+                        </mat-form-field>
+
+                        <mat-form-field class="mr-4">
+                            <mat-label>City</mat-label>
+                            <input formControlName="permanentCity" matInput placeholder="Ex. Kumbakonam">
+                        </mat-form-field>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12 border">
+                <div class="verification-detail info-wrapper">
+                    <h2 class="info-title">Verification details</h2>
+                    <div class="info-contents">
+                        <div class="d-flex equal-width">
+                            <mat-form-field class="mr-4">
+                                <input formControlName="mobileNumber" matInput placeholder="Mobile Number*">
+                            </mat-form-field>
+                            <mat-form-field class="mr-4">
+                                <input formControlName="whatsappNumber" matInput placeholder="Whatsapp Number*">
+                            </mat-form-field>
+                        </div>
+                        <div class="d-flex">
+                            <mat-form-field>
+                                <mat-label>Aadhar Number*</mat-label>
+                                <input formControlName="aadharNumber" matInput #aadharCode maxlength="12" type="number"
+                                    placeholder="Ex. 6123 0212 3112">
+                                <mat-hint align="end">{{aadharCode.value.length}} / 12</mat-hint>
+                            </mat-form-field>
+                            <span class="d-flex align-items-center">
+                                <mat-icon class="mr-2">cloud_upload</mat-icon>
+                                <span class="reg-card-text">Upload Aadhar card Details</span>
+                            </span>
+                        </div>
+                        <mat-form-field>
+                            <mat-label>Current Address</mat-label>
+                            <textarea formControlName="currentAddress" matInput
+                                placeholder="Ex. 37 Chinna saliya St"></textarea>
+                        </mat-form-field>
+                        <mat-form-field class="mr-4">
+                            <mat-label>City</mat-label>
+                            <input formControlName="currentCity" matInput placeholder="Ex. Kumbakonam">
+                        </mat-form-field>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row border">
+            <div class="col-md-6 col-sm-12 border">
+                <div class="personal-detail info-wrapper">
+                    <h2 class="info-title">Witness details 1
+                    </h2>
+
+                    <div class="info-contents">
+                        <div class="d-flex ">
+                            <mat-checkbox class="mt-2 ">IS Member</mat-checkbox>
+                            <mat-form-field class="ml-1">
+                                <mat-label>Member Number*</mat-label>
+                                <input formControlName="witOneMemberNumber" matInput placeholder="iwas00..">
+                                <button mat-button matSuffix mat-icon-button (click)="getWitOneValueByMemberNumber()">
+                                    <mat-icon>search</mat-icon>
+                                </button>
+                            </mat-form-field>
+                            <mat-form-field class="ml-4">
+                                <mat-label> 'Aadhar Number*</mat-label>
+                                <input formControlName="witOneAadharNumber" matInput placeholder="123462721712">
+                                <button mat-button matSuffix mat-icon-button (click)="getWitOneValueByAadharNumber()">
+                                    <mat-icon>search</mat-icon>
+                                </button>
+                            </mat-form-field>
+                        </div>
+                        <div class="d-flex equal-width">
+                            <mat-form-field class="mr-4">
+                                <input formControlName="witOneMemberName" matInput placeholder="Name*">
+                            </mat-form-field>
+                            <mat-form-field class="mr-4">
+                                <input formControlName="witOneFatherName" matInput placeholder="Father Name*">
+                            </mat-form-field>
+                        </div>
+                        <mat-form-field>
+                            <mat-label>Permanent Address</mat-label>
+                            <textarea formControlName="witOnePermanentAddress" matInput
+                                placeholder="Ex. 37 Chinna saliya St"></textarea>
+                        </mat-form-field>
+
+                        <mat-form-field class="mr-4">
+                            <mat-label>City</mat-label>
+                            <input formControlName="witOnePermanentCity" matInput placeholder="Ex. Kumbakonam">
+                        </mat-form-field>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="personal-detail info-wrapper">
+                    <h2 class="info-title">Witness details 2
+                    </h2>
+
+                    <div class="info-contents">
+                        <div class="d-flex ">
+                            <mat-checkbox class="mt-2 ">IS Member</mat-checkbox>
+                            <mat-form-field class="ml-1">
+                                <mat-label>Member Number*</mat-label>
+                                <input formControlName="witTwoMemberNumber" matInput placeholder="iwas00..">
+                                <button mat-button matSuffix mat-icon-button (click)="getWitTwoValueByMemberNumber()">
+                                    <mat-icon>search</mat-icon>
+                                </button>
+                            </mat-form-field>
+                            <mat-form-field class="ml-4">
+                                <mat-label> 'Aadhar Number*</mat-label>
+                                <input formControlName="witTwoAadharNumber" matInput placeholder="123462721712">
+                                <button mat-button matSuffix mat-icon-button (click)="getWitTwoValueByAadharNumber()">
+                                    <mat-icon>search</mat-icon>
+                                </button>
+                            </mat-form-field>
+                        </div>
+                        <div class="d-flex equal-width">
+                            <mat-form-field class="mr-4">
+                                <input formControlName="witTwoMemberName" matInput placeholder="Name*">
+                            </mat-form-field>
+                            <mat-form-field class="mr-4">
+                                <input formControlName="witTwoFatherName" matInput placeholder="Father Name*">
+                            </mat-form-field>
+                        </div>
+                        <mat-form-field>
+                            <mat-label>Permanent Address</mat-label>
+                            <textarea formControlName="witTwoPermanentAddress" matInput
+                                placeholder="Ex. 37 Chinna saliya St"></textarea>
+                        </mat-form-field>
+
+                        <mat-form-field class="mr-4">
+                            <mat-label>City</mat-label>
+                            <input formControlName="witTwoPermanentCity" matInput placeholder="Ex. Kumbakonam">
+                        </mat-form-field>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row border">
+
+            <div class="col-md-6 border">
+                <div class="info-wrapper">
+                    <h2 class="info-title">Other Details </h2>
+                    <div class="info-contents">
+
+                        <div class="d-flex equal-width">
+                            <mat-form-field>
+                                <input formControlName="approvalName" matInput placeholder="Approval Name*">
+                            </mat-form-field>
+                            <mat-form-field class="mr-4">
+                                <input formControlName="verificationName" matInput placeholder="Verification Name*">
+                            </mat-form-field>
+
+                        </div>
+                        <div class="d-flex equal-width">
+                            <mat-form-field class="mr-4">
+                                <input formControlName="jamathName" matInput placeholder="Jamath President Name*">
+                            </mat-form-field>
+
+                        </div>
+                        <mat-form-field class="mr-4">
+                            <mat-label>Purpose Of Loan</mat-label>
+                            <textarea formControlName="purposeOfLoan" matInput 
+                            placeholder="Ex. start a small scale business"></textarea>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-6 border">
+                <div class="info-wrapper">
+                    <h2 class="info-title">Other Attachment Files </h2>
+
+                    <div class="d-flex">
+
+                        <span class="d-flex align-items-center">
+                            <mat-icon class="mr-2">cloud_upload</mat-icon>
+                            <span class="reg-card-text">Upload proof</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex mt-3">
+            <span class="flex-grow-1"></span>
+            <div class="mr-4">
+                <button type="submit" class="btn btn-outline-success">save</button>
+                <button type="button" mat-raised-button class="ml-4" color="primary"
+                    (click)="clearClick()">Clear</button>
+            </div>
+        </div>
+    </form>
+</div>

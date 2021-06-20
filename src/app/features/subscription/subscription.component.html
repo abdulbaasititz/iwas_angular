@@ -1,0 +1,135 @@
+<div class="container">
+
+  <p></p>
+  <div class="title d-flex flex-column align-items-center">
+    <h1 class="m-0">SUBSCRIPTION FORM</h1>
+    <span class="line-sm"></span>
+  </div>
+
+  <form [formGroup]="subscriptionForm" (ngSubmit)="submit()">
+    <div class="row border ">
+      <div class="col-md-3 col-sm-12 mt-3">
+        <mat-form-field>
+          <mat-label>Member Number</mat-label>
+          <input formControlName="memberNumber" matInput value="">
+          <button mat-button matSuffix mat-icon-button aria-label="Clear">
+            <mat-icon>search</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+      <div class="col-md-3 col-sm-12 mt-3">
+        <mat-form-field class="">
+          <mat-label> Aadhar Number*</mat-label>
+          <input formControlName="aadharNo" matInput placeholder="123462721712">
+          <button mat-button matSuffix mat-icon-button>
+            <mat-icon>search</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-3 col-sm-12 mt-2">
+        <mat-form-field appearance="fill">
+          <mat-label>Received Date</mat-label>
+          <mat-datepicker #dp1 [disabled]="false"></mat-datepicker>
+          <input formControlName="receivedDate" matInput [matDatepicker]="dp1" [value]="date.value">
+          <mat-datepicker-toggle matSuffix [for]="dp1"></mat-datepicker-toggle>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-3 col-sm-12 mt-3">
+        <mat-form-field>
+          <mat-label>Payment</mat-label>
+          <input formControlName="payment" matInput value="500">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row border">
+      <div class="col-md-6 col-sm-12 border">
+        <div class="personal-detail info-wrapper">
+          <h2 class="info-title">Personal details</h2>
+          <div class="info-contents">
+            <mat-form-field class="mr-4">
+              <input formControlName="name" matInput placeholder="Name*">
+              <mat-error *ngIf="subscriptionForm.controls.name.hasError('required')">Name is required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="mr-4">
+              <input formControlName="fatherName" matInput placeholder="Father Name*">
+              <mat-error *ngIf="subscriptionForm.controls.fatherName.hasError('required')">Father Name is
+                required
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Permanent Address</mat-label>
+              <textarea formControlName="permanentAddress" matInput placeholder="Ex. 39 Main St"></textarea>
+
+            </mat-form-field>
+            <mat-form-field class="mr-4">
+              <mat-label>City</mat-label>
+              <input formControlName="permanentCity" matInput placeholder="Ex. Kumbakonam">
+            </mat-form-field>
+
+          </div>
+
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12 border">
+        <div class="verification-detail info-wrapper">
+          <h2 class="info-title">Verification details</h2>
+          <div class="info-contents">
+            <div class="d-flex equal-width">
+              <mat-form-field class="mr-4">
+                <input formControlName="mobileNumber" matInput placeholder="Mobile Number*">
+              </mat-form-field>
+              <mat-form-field class="mr-4">
+                <input formControlName="whatsappNumber" matInput placeholder="Whatsapp Number*">
+              </mat-form-field>
+            </div>
+            <div class="d-flex">
+              <mat-form-field>
+                <mat-label>Aadhar Number*</mat-label>
+                <input formControlName="aadharNumber" matInput #aadharCode maxlength="12" type="number"
+                       placeholder="Ex. 6123 0212 3112">
+                <mat-hint align="end">{{aadharCode.value.length}} / 12</mat-hint>
+              </mat-form-field>
+              <span class="d-flex align-items-center">
+              <mat-icon class="mr-2">cloud_upload</mat-icon>
+              <span class="reg-card-text">Upload Aadhar card Details</span>
+            </span>
+            </div>
+            <mat-form-field>
+              <mat-label>Current Address</mat-label>
+              <textarea formControlName="currentAddress"
+                        matInput placeholder="Ex. 37 Chinna saliya St"></textarea>
+            </mat-form-field>
+              <mat-form-field class="mr-4">
+                <mat-label>City</mat-label>
+                <input formControlName="currentCity" matInput placeholder="Ex. Kumbakonam">
+              </mat-form-field>
+
+          </div>
+        </div>
+      </div>
+      <p></p>
+    </div>
+    <p></p>
+<!--    <div class="row ">-->
+<!--      <div class="col-md-1 col-sm-3">-->
+<!--        <button mat-button class="border">SAVE</button>-->
+<!--      </div>-->
+<!--      <div class="col-md-1 col-sm-3">-->
+<!--        <button mat-button class="border" (click)="clearData()">RESET</button>-->
+<!--      </div>-->
+<!--    </div>-->
+    <div class="d-flex mt-3">
+      <span class="flex-grow-1"></span>
+      <div class="mr-4">
+        <button type="submit" class="btn btn-outline-success">save</button>
+        <button type="button" mat-raised-button class="ml-4" color="primary" (click)="clearClick()">Clear</button>
+      </div>
+    </div>
+  </form>
+
+
+</div>

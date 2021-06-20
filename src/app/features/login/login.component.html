@@ -1,0 +1,45 @@
+
+<div class="container-fluid">
+    <div class="row" style="height: 100vh;">
+      <div class="d-flex col-lg-6 col-sm-6 bg justify-content-center align-items-center" style="height: 100vh;">
+        <div class="text-center">
+          <h2 class="text-light d-block">GIAIomics</h2>
+          <p class="text-light">Analyze yourself with your Genes</p>
+        </div>
+      </div>
+      <div class="col-lg-6 col-sm-6">
+        <div class="d-flex flex-column justify-content-center align-items-center" style="height: 100vh;">
+          <a><i class="fas fa-user fa-3x text-secondary"></i></a>
+          <h3 class="text-secondary">Welcome Back!</h3>
+          <p *ngIf="!isCorrectCredential" class="text-danger">Please enter correct credentials</p>
+          <form [formGroup]="loginForm" (ngSubmit)="onLoginButtonClick()">
+            <div class="d-flex flex-column align-items-center">
+                <mat-form-field class="text-input">
+                    <input matInput placeholder="Email" formControlName="email">
+                    <mat-error *ngIf="loginForm.controls['email'].hasError('required')">
+                      Email is <strong> Required</strong>
+                    </mat-error>
+                    <mat-error *ngIf="loginForm.controls['email'].hasError('email')">
+                      Please enter valid email
+                    </mat-error>
+                  </mat-form-field>
+                  <mat-form-field class="text-input mt-2">
+                    <input matInput placeholder="Password" type="password" formControlName="password">
+                    <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
+                      Password is <strong>Required</strong>
+                    </mat-error>
+                    <mat-error *ngIf="loginForm.controls['password'].hasError('minlength')">
+                      Minimum 6 characters Required
+                    </mat-error>
+                    <mat-error *ngIf="loginForm.controls['password'].hasError('maxlength')">
+                      Maximum 20 characters allowed
+                    </mat-error>
+                  </mat-form-field>
+                  <button mat-raised-button color="primary" class="btn-login mt-3">Login</button>
+            </div>
+          </form>
+          <a (click)="onForgotPasswordClick()" class="mt-3">forgot password?</a>
+        </div>
+      </div>
+    </div>
+  </div>
