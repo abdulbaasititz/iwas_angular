@@ -1,19 +1,21 @@
+<app-header></app-header>
 <p></p>
 <div class="container">
-
+  <form [formGroup]="dashboardData">
   <div class="row ">
     <div class="card-holder col-md-4">
       <div class="basic-card-holder general-service-card-item">
         <h2>Total Member</h2>
         <div class="booking-detail">
-          <p><span class="cost">50</span> 
+          <!-- <mat-label [value]="totalMember">{{totalMember}}</mat-label> -->
+          <p><span class="cost">{{totalMember}}</span> 
         </div>
         <div class="row">
           <div class="col-md-6">
-            <button mat-button class="border">Clarify</button>
+            <button mat-button class="border" routerLink="{{routes.viewMember}}">Clarify</button>
           </div>
           <div class="col-md-6">
-            <button mat-button class="border">Add</button>
+            <button mat-button class="border" routerLink="{{routes.createMember}}">Add</button>
           </div>
         </div>
       </div>
@@ -22,30 +24,33 @@
       <div class="basic-card-holder general-service-card-item">
         <h2>Total Amount</h2>
         <div class="booking-detail">
-          <p><span class="cost">3,30,000</span> <span class="currency">INR</span></p>
+          
+            <p><span class="cost">{{totalAmount}}</span>
+              <span class="currency">INR</span></p>
+
         </div>
         <div class="row">
           <div class="col-md-6">
-            <button mat-button class="border">Clarify</button>
+            <button mat-button class="border" routerLink="{{routes.viewSubscribe}}">Clarify</button>
           </div>
           <div class="col-md-6">
-            <button mat-button class="border">Add</button>
+            <button mat-button class="border" routerLink="{{routes.createSubscribe}}">Add</button>
           </div>
         </div>
       </div>
     </div>
     <div class="card-holder col-md-4">
       <div class="basic-card-holder general-service-card-item">
-        <h2>Other Donation</h2>
+        <h2>Newly Joined(After 2020)</h2>
         <div class="booking-detail">
-          <p><span class="cost">1,30,000</span> <span class="currency">INR</span></p>
+          <p><span class="cost" >{{currentYearJoined}}</span></p>
         </div>
         <div class="row">
           <div class="col-md-6">
-            <button mat-button class="border">Clarify</button>
+            <button mat-button class="border" routerLink="{{routes.viewMember}}">Clarify</button>
           </div>
           <div class="col-md-6">
-            <button mat-button class="border">Add</button>
+            <button mat-button class="border" routerLink="{{routes.createMember}}">Add</button>
           </div>
         </div>
       </div>
@@ -54,51 +59,21 @@
   <div class="row ">
     <div class="card-holder col-md-4">
       <div class="basic-card-holder general-service-card-item">
-        <h2>Debt Amount</h2>
+        <h2>Subscription Amount(After 2020)</h2>
         <div class="booking-detail">
-          <p><span class="cost">10,50,000</span> <span class="currency">INR</span></p>
+          <p><span class="cost">{{currentYearAmount}}</span>
+            <span class="currency">INR</span></p>
         </div>
         <div class="row">
           <div class="col-md-6">
-            <button mat-button class="border">Clarify</button>
+            <button mat-button class="border" routerLink="{{routes.viewSubscribe}}">Clarify</button>
           </div>
           <div class="col-md-6">
-            <button mat-button class="border">Add</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card-holder col-md-4">
-      <div class="basic-card-holder general-service-card-item">
-        <h2>Balance</h2>
-        <div class="booking-detail">
-          <p><span class="cost">3,30,000</span> <span class="currency">INR</span></p>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <button mat-button class="border">Clarify</button>
-          </div>
-          <div class="col-md-6">
-            <button mat-button class="border">Add</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card-holder col-md-4">
-      <div class="basic-card-holder general-service-card-item">
-        <h2>Debt Overdiv</h2>
-        <div class="booking-detail">
-          <p><span class="cost">1,30,000</span> <span class="currency">INR</span></p>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <button mat-button class="border">Clarify</button>
-          </div>
-          <div class="col-md-6">
-            <button mat-button class="border">Add</button>
+            <button mat-button class="border" routerLink="{{routes.createSubscribe}}">Add</button>
           </div>
         </div>
       </div>
     </div>
   </div>
+  </form>
 </div>

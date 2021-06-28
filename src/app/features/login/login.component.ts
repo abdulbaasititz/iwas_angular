@@ -1,6 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router,
               private formBuilder: FormBuilder,
-              private route : ActivatedRoute) { }
+              private route : ActivatedRoute,
+              private toastr: ToastrService) { }
 
   
   ngOnInit() {
@@ -58,9 +60,11 @@ export class LoginComponent implements OnInit {
 
     if (isValidCredential) {
       this.isCorrectCredential = true;
+      this.toastr.success("Login Successfully");
       localStorage.setItem('isLoggedIn','true');
       this.router.navigate([this.returnUrl]);
     } else {
+      this.toastr.success("Check Username & password Or Contact Admin");
       this.isCorrectCredential = false;
     }
 
@@ -69,7 +73,7 @@ export class LoginComponent implements OnInit {
   }
 
   onForgotPasswordClick() {
-    console.log('Forgot password click');
+    this.toastr.success("Contact System Admin");
   }
 
 }

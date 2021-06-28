@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {MatSidenavModule} from "@angular/material/sidenav";
-import {AppConstants} from "../../core/utils/AppConstants";
+import { AppConstants } from 'src/app/core/utils/AppConstants';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-header',
@@ -9,9 +10,14 @@ import {AppConstants} from "../../core/utils/AppConstants";
 })
 export class HeaderComponent implements OnInit {
   routes = AppConstants.routes;
-  constructor() { }
+  constructor(private router: Router,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
   }
-
+  onLoginButtonClick(){
+    localStorage.setItem('isLoggedIn','false');
+    this.toastr.success("Logout Successfully");
+    this.router.navigate(['/login']);
+  }
 }

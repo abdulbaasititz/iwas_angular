@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {DashboardComponent} from "./features/dashboard/dashboard.component";
-import {SubscriptionComponent} from "./features/subscription/subscription.component";
+// import {SubscriptionComponent} from "./features/subscription/subscription.component";
 import {DazzlingDebtComponent} from "./features/dazzling-debt/dazzling-debt.component";
 import {LoginComponent} from "./features/login/login.component"
 import { CreateSubscriptionComponent } from './features/subscription/create-subscription/create-subscription.component';
@@ -15,7 +15,7 @@ const routes: Routes = [
   { path : 'create-member', component : CreateMemberComponent,canActivate:[AuthGuard]},
   { path : 'view-member', component : ViewMemberComponent,canActivate:[AuthGuard]},
   { path : 'dashboard',  component : DashboardComponent,canActivate:[AuthGuard]},
-  { path : 'subscription',  component : SubscriptionComponent,canActivate:[AuthGuard]},
+  // { path : 'subscription',  component : SubscriptionComponent,canActivate:[AuthGuard]},
   { path : 'dazzling-debt',   component:DazzlingDebtComponent,canActivate:[AuthGuard]},
   { path : 'login',   component:LoginComponent},
   { path : 'create-subscription' , component:CreateSubscriptionComponent,canActivate:[AuthGuard]},

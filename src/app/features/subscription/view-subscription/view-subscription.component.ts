@@ -26,7 +26,7 @@ export class ViewSubscriptionComponent implements AfterViewInit {
 
   ngAfterViewInit() {
 
-    this.httpClient.get<any>('http://localhost:9013/iwas/api/subscription/get/all'
+    this.httpClient.get<any>('http://localhost:9015/api/get/subscription'
     ).subscribe(data => {
       console.log(data);
       //console.log("done");

@@ -33,7 +33,7 @@ export class ViewMemberComponent implements AfterViewInit {
 
   ngAfterViewInit() {
 
-    this.httpClient.get<any>('http://localhost:9013/api/get/member'
+    this.httpClient.get<any>('http://localhost:9015/api/get/member'
     ).subscribe(data => {
       console.log(data);
       //console.log("done");

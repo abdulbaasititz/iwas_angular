@@ -7,15 +7,15 @@
 
 <div class="container-fluid">
   <div class="row " style="border: solid white;box-shadow:0px 0px 10px #000000;background-color:#fafafa;align-content: center;height: 54px!important;">
-    <div class="col-md-3 mt-3">
+    <div class="col-md-4 mt-3">
       <a href="/dashboard"  class="navbar-brand">
         <h1 href="/dashboard">
-          <img src="assets/img.png" alt=""><span style="padding: 15%;color: #23272b;font-weight: 800;">IWAS FOUNDATION</span>
+          <img src="assets/logo.png" alt=""><span style="padding: 15%;color: #23272b;font-weight: 800;">IWAS FOUNDATION</span>
         </h1>
       </a>
     </div>
-    <div class="col-md-2 ">
-    </div>
+    <!-- <div class="col-md-1 ">
+    </div>  -->
     <div style="top: 27%;" class="col-md-2 mt-3">
       <button mat-button [matMenuTriggerFor]="menuMember">MEMBERSHIP</button>
       <mat-menu #menuMember="matMenu">
@@ -37,7 +37,10 @@
         <button mat-menu-item routerLink="{{routes.dazzlingDebt}}">Create DazzlingDebt</button>
       </mat-menu>
     </div>
-
+    <div style="top:27%" class="col-md-2 mt-3 ">
+      <button mat-button (click)="onLoginButtonClick()"  >LOG OUT</button>
+    </div>
+    
   </div>
 </div>
 

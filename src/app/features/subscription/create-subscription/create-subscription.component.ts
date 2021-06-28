@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-create-subscription',
   templateUrl: './create-subscription.component.html',
@@ -15,7 +15,7 @@ export class CreateSubscriptionComponent implements OnInit {
 
   //date = new FormControl(new Date());
   constructor(private formBuilder : FormBuilder
-              ,private httpClient: HttpClient,private _snackBar: MatSnackBar) {
+              ,private httpClient: HttpClient,private toastr: ToastrService) {
     this.subscriptionForm = this.formBuilder.group({
       id:['0'],
       memberNumber: [''],
@@ -44,21 +44,17 @@ export class CreateSubscriptionComponent implements OnInit {
 
   submit() {
     console.log(this.subscriptionForm.value);
-    console.log(this.subscriptionForm.value);
     var amount=this.subscriptionForm.value.payment;
     var memberNumber = this.subscriptionForm.value.memberNumber;
     var receivedDate = this.subscriptionForm.value.receivedDate;
-    return this.httpClient.post<any>("http://localhost:9013/iwas/api/subscription/post?amount="+amount+"+&date="+receivedDate+"&memberId="+memberNumber,
-      null
+    //receivedDate="20/21/2021";
+    return this.httpClient.post<any>("http://localhost:9015/api/set/subscribe/year?amount="+amount+"+&currentDate="+receivedDate+"&memberId="+memberNumber,
+     null
     ). subscribe ( response => {
-      if(response){
-        console.log(response);
-        //this.subscriptionForm.reset();
-        this.showMessage();
-        
-        //this.dialog.open(DialogElementsExampleDialog);
+      if(response['status']=== "1"){
+        this.toastr.success("Data Saved Successfully");
       }else{
-        this.showMessage();
+        this.toastr.error("Member Number Already Exist Check the member sheet");
       }
     });
 
@@ -67,16 +63,12 @@ export class CreateSubscriptionComponent implements OnInit {
     //this.subscriptionForm.reset();
     setTimeout(() => this.subscriptionForm.reset(), 200);
   }
-  showMessage() {
-    this._snackBar.openFromComponent(MessageDialogComponent, {
-      duration: 3000,
-    });
-  }
+ 
   getValueByMemberNumber(){
     console.log("working"+this.subscriptionForm.value.memberNumber);
     var memberNumber = this.subscriptionForm.value.memberNumber;
     
-    this.httpClient.get<any>('http://localhost:9013/iwas/api/member/get/member-number?memberNumber='+memberNumber
+    this.httpClient.get<any>('http://localhost:9015/api/get/member-number?memberNumber='+memberNumber
     ).subscribe(data => {
       console.log(data);
       this.subscriptionForm.controls.memberName.setValue(data.memberName);
@@ -99,7 +91,7 @@ export class CreateSubscriptionComponent implements OnInit {
   getValueByAadharNumber(){
     console.log("working"+this.subscriptionForm.value.aadharNumber);
     var aadharNumber = this.subscriptionForm.value.aadharNumber;
-    this.httpClient.get<any>('http://localhost:9013/iwas/api/member/get/aadhar-number?aadharNumber='+aadharNumber
+    this.httpClient.get<any>('http://localhost:9015/api/get/aadhar-number?aadharNumber='+aadharNumber
     ).subscribe(data => {
       console.log(data);
       this.subscriptionForm.controls.memberName.setValue(data.memberName);
@@ -117,13 +109,3 @@ export class CreateSubscriptionComponent implements OnInit {
   }
 }
 
-@Component({
-  selector: 'message-dialog',
-  templateUrl: 'message-dialog.html',
-  styles: [`
-    .member-enroll {
-      color: green;
-    }
-  `],
-})
-export class MessageDialogComponent {}

@@ -21,7 +21,7 @@ export class AuthGuard implements CanActivate {
       
       this.returnUrl = state.url;
 
-      if(isLoggedIn) {
+      if(isLoggedIn === 'true') {
         return true;
       }
       

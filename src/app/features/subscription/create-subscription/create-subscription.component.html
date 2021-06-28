@@ -1,4 +1,4 @@
-
+<app-header></app-header>
 <div class="container">
 
     <p></p>
@@ -95,10 +95,10 @@
                          placeholder="Ex. 6123 0212 3112">
                   <mat-hint align="end">{{aadharCode.value.length}} / 12</mat-hint>
                 </mat-form-field>
-                <span class="d-flex align-items-center">
-                <mat-icon class="mr-2">cloud_upload</mat-icon>
-                <span class="reg-card-text">Upload Aadhar card Details</span>
-              </span>
+                <!-- <span class="d-flex align-items-center">
+                  <mat-icon class="mr-2">cloud_upload</mat-icon>
+                  <span class="reg-card-text">Upload Aadhar card Details</span>
+                </span> -->
               </div>
               <mat-form-field>
                 <mat-label>Current Address</mat-label>
@@ -129,7 +129,7 @@
         <div class="mr-4">
           <button type="submit" class="btn btn-outline-success" (click)="submit()">Subscribe</button>
           <button type="button" mat-raised-button class="ml-4" color="primary" (click)="clearClick()">Clear</button>
-          <button mat-stroked-button (click)="showMessage()" [hidden]=true ></button>
+        
         </div>
       </div>
     </form>

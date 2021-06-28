@@ -7,7 +7,7 @@ import { HeaderComponent } from './features/header/header.component';
 import { FooterComponent } from './features/footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashboardComponent } from './features/dashboard/dashboard.component';
-import { SubscriptionComponent } from './features/subscription/subscription.component';
+// import { SubscriptionComponent } from './features/subscription/subscription.component';
 import { DazzlingDebtComponent } from './features/dazzling-debt/dazzling-debt.component';
 import { NavigationComponent } from './features/navigation/navigation.component';
 import { CreateSubscriptionComponent } from './features/subscription/create-subscription/create-subscription.component';
@@ -66,7 +66,7 @@ import { MatTableExporterModule } from 'mat-table-exporter';
 import { ViewSubscriptionComponent } from './features/subscription/view-subscription/view-subscription.component';
 import { CreateMemberComponent } from './features/member/create-member/create-member.component';
 import { ViewMemberComponent } from './features/member/view-member/view-member.component';
-
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -75,7 +75,7 @@ import { ViewMemberComponent } from './features/member/view-member/view-member.c
     HeaderComponent,
     FooterComponent,
     DashboardComponent,
-    SubscriptionComponent,
+    // SubscriptionComponent,
     DazzlingDebtComponent,
     NavigationComponent,
     ViewMemberComponent,
@@ -86,6 +86,7 @@ import { ViewMemberComponent } from './features/member/view-member/view-member.c
     
   ],
   imports: [
+    ToastrModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
