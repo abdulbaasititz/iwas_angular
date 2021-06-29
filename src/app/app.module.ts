@@ -7,7 +7,6 @@ import { HeaderComponent } from './features/header/header.component';
 import { FooterComponent } from './features/footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashboardComponent } from './features/dashboard/dashboard.component';
-// import { SubscriptionComponent } from './features/subscription/subscription.component';
 import { DazzlingDebtComponent } from './features/dazzling-debt/dazzling-debt.component';
 import { NavigationComponent } from './features/navigation/navigation.component';
 import { CreateSubscriptionComponent } from './features/subscription/create-subscription/create-subscription.component';
@@ -75,7 +74,6 @@ import { ToastrModule } from 'ngx-toastr';
     HeaderComponent,
     FooterComponent,
     DashboardComponent,
-    // SubscriptionComponent,
     DazzlingDebtComponent,
     NavigationComponent,
     ViewMemberComponent,

@@ -6,6 +6,7 @@ import {MatSort} from '@angular/material/sort';
 
 import {HttpClient} from "@angular/common/http";
 import {FormBuilder, Validators} from "@angular/forms";
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-view-subscription',
@@ -15,7 +16,7 @@ import {FormBuilder, Validators} from "@angular/forms";
 export class ViewSubscriptionComponent implements AfterViewInit {
   displayedColumns: string[] = ['joiningDate', 'memberNumber', 'memberName'
   , 'amount', 'subscriptionYear', ];
-
+  baseUrl = environment.baseUrl;
   dataSource = new MatTableDataSource<PeriodicElement>();
   constructor(private formBuilder : FormBuilder
     ,private httpClient: HttpClient) {  }
@@ -26,7 +27,7 @@ export class ViewSubscriptionComponent implements AfterViewInit {
 
   ngAfterViewInit() {
 
-    this.httpClient.get<any>('http://localhost:9015/api/get/subscription'
+    this.httpClient.get<any>(this.baseUrl+'/get/subscription'
     ).subscribe(data => {
       console.log(data);
       //console.log("done");

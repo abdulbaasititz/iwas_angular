@@ -5,6 +5,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AppConstants } from 'src/app/core/utils/AppConstants';
+import { environment } from 'src/environments/environment.prod';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -17,6 +18,7 @@ export class DashboardComponent implements OnInit {
   currentYearJoined : string;
   currentYearAmount : string;
   routes = AppConstants.routes;
+  baseUrl = environment.baseUrl;
   constructor(private httpClient: HttpClient,private formBuilder : FormBuilder,private router: Router,
     private toastr: ToastrService) {
     this.dashboardData = this.formBuilder.group({
@@ -25,7 +27,7 @@ export class DashboardComponent implements OnInit {
     });
   }
   ngOnInit() {
-    this.httpClient.get<any>('http://localhost:9015/api/get/dashboard').subscribe(data => {
+    this.httpClient.get<any>(this.baseUrl+'/get/dashboard').subscribe(data => {
         console.log(data);
         this.dashboardData.controls.totalMember.setValue(data.totalMember);
         this.totalMember=data.totalMember;

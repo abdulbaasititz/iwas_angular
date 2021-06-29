@@ -3,6 +3,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import { ToastrService } from 'ngx-toastr';
+import { environment } from 'src/environments/environment.prod';
 
 
 @Component({
@@ -15,6 +16,7 @@ export class CreateMemberComponent implements OnInit {
   value="clear me";
   memberForm : FormGroup;
   private data:any = []
+  baseUrl = environment.baseUrl;
   //date = new FormControl(new Date());
   constructor(private formBuilder : FormBuilder,
     private httpClient: HttpClient,private toastr: ToastrService) {
@@ -53,7 +55,7 @@ export class CreateMemberComponent implements OnInit {
       
 
     //console.log(this.memberForm.value);
-    return this.httpClient.post<any>("http://localhost:9015/api/set/member",
+    return this.httpClient.post<any>(this.baseUrl+"/set/member",
       this.memberForm.value
     ). subscribe ( response => {
       if(response){

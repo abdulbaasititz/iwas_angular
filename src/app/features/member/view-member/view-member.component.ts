@@ -6,6 +6,7 @@ import {MatSort} from '@angular/material/sort';
 
 import {HttpClient} from "@angular/common/http";
 import {FormBuilder, Validators} from "@angular/forms";
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-view-member',
@@ -17,7 +18,7 @@ export class ViewMemberComponent implements AfterViewInit {
     , 'memberName', 'fatherName', 'permanentAddress'
     , 'permanentCity', 'mobileNumber', 'whatsappNumber'
     , 'aadharNumber', 'currentAddress', 'currentCity'];
-
+  baseUrl = environment.baseUrl;
   dataSource = new MatTableDataSource<PeriodicElement>();
   //dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
@@ -33,7 +34,7 @@ export class ViewMemberComponent implements AfterViewInit {
 
   ngAfterViewInit() {
 
-    this.httpClient.get<any>('http://localhost:9015/api/get/member'
+    this.httpClient.get<any>(this.baseUrl+'/get/member'
     ).subscribe(data => {
       console.log(data);
       //console.log("done");

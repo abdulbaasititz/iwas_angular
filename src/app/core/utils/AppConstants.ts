@@ -7,6 +7,7 @@ export class AppConstants {
     viewSubscribe: '/view-subscription',
     dazzlingDebt: '/dazzling-debt',
     login:'/login',
+    baseUrl: 'http://207.180.233.17:9050/api'
   };
   static maxFileUploadSize = 3;
 }

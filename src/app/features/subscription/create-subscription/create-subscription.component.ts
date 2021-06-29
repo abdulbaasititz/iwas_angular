@@ -3,6 +3,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import { ToastrService } from 'ngx-toastr';
+import { environment } from 'src/environments/environment.prod';
 @Component({
   selector: 'app-create-subscription',
   templateUrl: './create-subscription.component.html',
@@ -12,7 +13,7 @@ export class CreateSubscriptionComponent implements OnInit {
   value = "clear me";
   subscriptionForm: FormGroup;
   date = new FormControl(new Date());
-
+  baseUrl = environment.baseUrl;
   //date = new FormControl(new Date());
   constructor(private formBuilder : FormBuilder
               ,private httpClient: HttpClient,private toastr: ToastrService) {
@@ -48,7 +49,7 @@ export class CreateSubscriptionComponent implements OnInit {
     var memberNumber = this.subscriptionForm.value.memberNumber;
     var receivedDate = this.subscriptionForm.value.receivedDate;
     //receivedDate="20/21/2021";
-    return this.httpClient.post<any>("http://localhost:9015/api/set/subscribe/year?amount="+amount+"+&currentDate="+receivedDate+"&memberId="+memberNumber,
+    return this.httpClient.post<any>(this.baseUrl+"/set/subscribe/year?amount="+amount+"+&currentDate="+receivedDate+"&memberId="+memberNumber,
      null
     ). subscribe ( response => {
       if(response['status']=== "1"){
@@ -68,7 +69,7 @@ export class CreateSubscriptionComponent implements OnInit {
     console.log("working"+this.subscriptionForm.value.memberNumber);
     var memberNumber = this.subscriptionForm.value.memberNumber;
     
-    this.httpClient.get<any>('http://localhost:9015/api/get/member-number?memberNumber='+memberNumber
+    this.httpClient.get<any>(this.baseUrl+'/get/member-number?memberNumber='+memberNumber
     ).subscribe(data => {
       console.log(data);
       this.subscriptionForm.controls.memberName.setValue(data.memberName);
@@ -91,7 +92,7 @@ export class CreateSubscriptionComponent implements OnInit {
   getValueByAadharNumber(){
     console.log("working"+this.subscriptionForm.value.aadharNumber);
     var aadharNumber = this.subscriptionForm.value.aadharNumber;
-    this.httpClient.get<any>('http://localhost:9015/api/get/aadhar-number?aadharNumber='+aadharNumber
+    this.httpClient.get<any>(this.baseUrl+'/get/aadhar-number?aadharNumber='+aadharNumber
     ).subscribe(data => {
       console.log(data);
       this.subscriptionForm.controls.memberName.setValue(data.memberName);
