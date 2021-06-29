@@ -26,3 +26,6 @@ COPY --from=build /usr/local/app/dist/iwas /usr/share/nginx/html
 
 # Expose port 80
 EXPOSE 9501
+
+#Run Command
+#docker build --tag=iwas-angular:latest

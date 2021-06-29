@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {AppConstants} from "E:/iwas project/iwas/src/app/core/utils/AppConstants";
+import {AppConstants} from "src/app/core/utils/AppConstants";
 
 
 @Component({
